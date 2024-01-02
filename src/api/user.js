@@ -9,3 +9,8 @@ export const userRegister = (data) => {
 export const userLogin = (data) => {
   return http.post('/api/login', data)
 }
+
+// 用户基本信息
+export const userInfo = () => {
+  return http.get('/my/userinfo')
+}

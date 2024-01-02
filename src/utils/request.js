@@ -7,7 +7,7 @@ const baseURL = 'http://big-event-vue-api-t.itheima.net'
 
 const instance = axios.create({
   baseURL,
-  timeout: 1000
+  timeout: 2000
 })
 
 // 请求拦截器
@@ -49,6 +49,7 @@ instance.interceptors.response.use(
       router.push('/login')
     }
 
+    // console.log(err)
     // 错误的默认情况
     ElMessage.error(err.response.data.message || '服务异常')
     return Promise.reject(err)
