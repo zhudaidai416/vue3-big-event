@@ -5,35 +5,7 @@
     </el-aside>
     <el-container>
       <el-header>
-        <div>
-          黑马程序员：<strong>{{
-            userStore.user.nickname || userStore.user.username
-          }}</strong>
-        </div>
-        <el-dropdown placement="bottom-end" @command="handleCommand">
-          <span class="el-dropdown__box">
-            <el-avatar :src="userStore.user.user_pic || avatar" />
-            <el-icon>
-              <CaretBottom />
-            </el-icon>
-          </span>
-          <template #dropdown>
-            <el-dropdown-menu>
-              <el-dropdown-item command="profile" :icon="User"
-                >基本资料</el-dropdown-item
-              >
-              <el-dropdown-item command="avatar" :icon="Crop"
-                >更换头像</el-dropdown-item
-              >
-              <el-dropdown-item command="password" :icon="EditPen"
-                >重置密码</el-dropdown-item
-              >
-              <el-dropdown-item command="logout" :icon="SwitchButton"
-                >退出登录</el-dropdown-item
-              >
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown>
+        <header-menu />
       </el-header>
       <el-main>
         <router-view></router-view>
@@ -43,41 +15,7 @@
   </el-container>
 </template>
 
-<script setup>
-import {
-  User,
-  Crop,
-  EditPen,
-  SwitchButton,
-  CaretBottom
-} from '@element-plus/icons-vue'
-import avatar from '@/assets/default.png'
-import { useUserStore } from '@/stores'
-import { onMounted } from 'vue'
-import { useRouter } from 'vue-router'
-
-const userStore = useUserStore()
-onMounted(() => {
-  userStore.getUser()
-})
-
-const router = useRouter()
-const handleCommand = async (key) => {
-  if (key === 'logout') {
-    await ElMessageBox.confirm('确认要退出吗？', '温馨提示', {
-      confirmButtonText: '确认',
-      cancelButtonText: '取消',
-      type: 'warning'
-    })
-    // 清空本地数据（token + user信息）
-    userStore.removeToken()
-    userStore.setUser({})
-    router.push('/login')
-  } else {
-    router.push(`/user/${key}`)
-  }
-}
-</script>
+<script setup></script>
 
 <style lang="scss" scoped>
 .layout-container {
@@ -88,25 +26,10 @@ const handleCommand = async (key) => {
   }
 
   .el-header {
-    background-color: #fff;
+    border-bottom: 1px solid var(--el-border-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    .el-dropdown__box {
-      display: flex;
-      align-items: center;
-
-      .el-icon {
-        color: #999;
-        margin-left: 10px;
-      }
-
-      &:active,
-      &:focus {
-        outline: none;
-      }
-    }
   }
 
   .el-footer {
