@@ -57,7 +57,7 @@
       </el-form>
       <!-- 登录表单 -->
       <el-form
-        ref="form"
+        ref="formRef"
         size="large"
         autocomplete="off"
         :model="formModel"
@@ -116,7 +116,7 @@
 <script setup>
 import { User, Lock } from '@element-plus/icons-vue'
 import { ref, watch } from 'vue'
-import { userRegister, userLogin } from '@/api/user'
+import { userRegisterApi, userLoginApi } from '@/api/user'
 import { useUserStore } from '@/stores'
 import { useRouter } from 'vue-router'
 const isRegister = ref(false)
@@ -125,7 +125,7 @@ const formModel = ref({
   password: '',
   repassword: ''
 })
-const form = ref()
+const formRef = ref()
 const rules = {
   username: [
     { required: true, message: '请输入用户名', trigger: 'blur' },
@@ -162,8 +162,8 @@ const rules = {
 // 注册
 const register = async () => {
   // 注册成功前，进行校验
-  await form.value.validate()
-  await userRegister(formModel.value)
+  await formRef.value.validate()
+  await userRegisterApi(formModel.value)
   ElMessage.success('注册成功！')
   isRegister.value = false
 }
@@ -171,8 +171,8 @@ const userStore = useUserStore()
 const router = useRouter()
 // 登录
 const login = async () => {
-  await form.value.validate()
-  const res = await userLogin(formModel.value)
+  await formRef.value.validate()
+  const res = await userLoginApi(formModel.value)
   userStore.setToken(res.data.token)
   ElMessage.success('登录成功！')
   router.push('/')

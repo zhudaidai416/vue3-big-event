@@ -35,7 +35,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import { articleAddChannel, articleEditChannel } from '@/api/article'
+import { channelAddApi, channelEditApi } from '@/api/article'
 
 const dialogVisible = ref(false)
 const formRef = ref()
@@ -77,16 +77,16 @@ const submit = async () => {
   await formRef.value.validate()
   const isEdit = formModel.value.id
   if (isEdit) {
-    await articleEditChannel(formModel.value)
+    await channelEditApi(formModel.value)
     ElMessage.success('编辑成功！')
   } else {
-    await articleAddChannel(formModel.value)
+    await channelAddApi(formModel.value)
     ElMessage.success('添加成功！')
   }
   // 三元运算符写法
   // formModel.value.id
-  //   ? await articleEditChannel(formModel.value)
-  //   : await articleAddChannel(formModel.value)
+  //   ? await channelEditApi(formModel.value)
+  //   : await channelAddApi(formModel.value)
 
   // ElMessage({
   //   type: 'success',

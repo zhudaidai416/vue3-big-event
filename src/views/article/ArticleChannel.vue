@@ -41,9 +41,8 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { Edit, Delete } from '@element-plus/icons-vue'
-import { articleChannels, articleDelChannel } from '@/api/article'
+import { channelListApi, channelDelApi } from '@/api/article'
 import ChannelEdit from './components/ChannelEdit.vue'
-import { ElMessage, ElMessageBox } from 'element-plus'
 
 const channelList = ref([])
 const loading = ref(false)
@@ -51,10 +50,11 @@ const dialog = ref()
 
 const getChannelList = async () => {
   loading.value = true
-  const res = await articleChannels()
+  const res = await channelListApi()
   channelList.value = res.data.data
   loading.value = false
 }
+
 onMounted(() => {
   getChannelList()
 })
@@ -77,7 +77,7 @@ const delChannel = async (row) => {
     confirmButtonText: '确认',
     cancelButtonText: '取消'
   })
-  await articleDelChannel(row.id)
+  await channelDelApi(row.id)
   ElMessage.success('删除成功！')
   getChannelList()
 }

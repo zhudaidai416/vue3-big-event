@@ -1,16 +1,16 @@
 import http from '@/utils/request'
 
 // 注册
-export const userRegister = (data) => {
+export const userRegisterApi = (data) => {
   return http.post('/api/reg', data)
 }
 
 // 登录
-export const userLogin = (data) => {
+export const userLoginApi = (data) => {
   return http.post('/api/login', data)
 }
 
 // 用户基本信息
-export const userInfo = () => {
+export const userInfoApi = () => {
   return http.get('/my/userinfo')
 }
