@@ -131,8 +131,8 @@ const resetArticle = () => {
   params.value.state = ''
   getArticleList()
 }
-const articleEditRef = ref()
 // 添加
+const articleEditRef = ref()
 const addArticle = () => {
   articleEditRef.value.open({})
 }

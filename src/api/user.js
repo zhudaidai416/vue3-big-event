@@ -14,3 +14,18 @@ export const userLoginApi = (data) => {
 export const userInfoApi = () => {
   return http.get('/my/userinfo')
 }
+
+// 更新用户基本信息
+export const userInfoUpdateApi = (data) => {
+  return http.put('/my/userinfo', data)
+}
+
+// 更新用户头像
+export const userAvatarApi = (avatar) => {
+  return http.patch('/my/update/avatar', { avatar })
+}
+
+// 更新用户密码
+export const userPwdApi = (data) => {
+  return http.patch('/my/updatepwd', data)
+}
