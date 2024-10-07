@@ -1,35 +1,29 @@
 # vue3-big-event
 
-This template should help get you started developing with Vue 3 in Vite.
+## 介绍
 
-## Recommended IDE Setup
+基于 vue3+js+pinia 的大事件管理系统
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## 环境依赖
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
+```bash
 pnpm install
 ```
 
-### Compile and Hot-Reload for Development
+## 运行
 
-```sh
+```bash
 pnpm dev
 ```
 
-### Compile and Minify for Production
+- 账号：zhudaidai
+- 密码：123456
+- 若登录失败可在[在线地址](https://fe-bigevent-web.itheima.net/login)重新注册
 
-```sh
-pnpm build
-```
+## 教程
 
-### Lint with [ESLint](https://eslint.org/)
+[📺](https://www.bilibili.com/video/BV1HV4y1a7n4/?p=159)
 
-```sh
-pnpm lint
-```
+[黑马-大事件在线地址](https://fe-bigevent-web.itheima.net/login) ➡ 可在此注册账号密码
+
+[黑马-大事件接口文档](https://apifox.com/apidoc/shared-26c67aee-0233-4d23-aab7-08448fdf95ff/api-93850835)
